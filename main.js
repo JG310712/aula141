@@ -5,7 +5,7 @@ marioX = 325;
 marioY = 325;
 
 function preload(){
-    world_start = loadSound("worlt_start.wav");
+    world_start = loadSound("world_start.wav");
     setSprites();
     MarioAnimation();
 }
