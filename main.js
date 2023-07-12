@@ -1,4 +1,4 @@
-img = "";
+//img = "";
 noseX = 0;
 noseY = 0;
 marioX = 325;
