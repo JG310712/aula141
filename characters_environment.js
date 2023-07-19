@@ -1,3 +1,4 @@
+
 /*=================================
 =            Variáveis            =
 =================================*/
@@ -221,7 +222,7 @@ function getCoins(coin,character){
   if( character.overlap(coin) && character.live && coin.get==false){
     character.coins+=1;
     coin.get=true;
-    
+    mario_coin.play();
   };
 }
     
@@ -309,7 +310,7 @@ function manualControl(character){
 
 /* Movimentos do personagem */
 function jumping(character){
-	if( (noseY < 200  &&character.live) || (touchIsDown&&character.live) ){
+	if( (noseY < 168  &&character.live) || (touchIsDown&&character.live) ){
     character.velocity.y+=gameConfig.jump;
     mario_jump.play();
 	}
@@ -366,7 +367,7 @@ function StepOnEnemy(obj1,obj2){
     }else{
       obj1.velocity.y+=gameConfig.jump*0.8;
     }
-    
+    mario_kick.play();
 	}
 }
 
@@ -380,7 +381,10 @@ function die(character){
     character.changeAnimation('dead');
     character.velocity.y-=2;
     console.log("die - " + character.liveNumber);
-    
+    if(character.liveNumber > 0)
+    {
+      mario_die.play();
+    }
 }
 
 // Verificar o status e resposta do personagem ao status do sprite e jogo
@@ -392,7 +396,7 @@ function checkStatus(character){
   }
   if(character.live==false && character.liveNumber==0){
     gameConfig.status="gameover";
-    
+    mario_gameover.play();
   }
 
 }
@@ -625,3 +629,5 @@ function upSide(obj){ return obj.position.y-(obj.height/2);}
 function downSide(obj){ return obj.position.y+(obj.height/2);}
 
 /*=====  Fim dos Debugs  ======*/
+
+
